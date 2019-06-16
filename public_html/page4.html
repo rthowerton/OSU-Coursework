@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Making Magic</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+
+   <body>
+      <header id="header">
+	 <a class="home" href="index.html"><img src="Riot_Games_logo.png" alt="logo" class="logo"></img></a>
+      </header>
+      
+      <ul>
+	 <li><a href="index.html">Front</a></li>
+	 <li><a href="page2.html">Start</a></li>
+	 <li><a href="page3.html">Warnings</a></li>
+	 <li><a href="page4.html">The Set-Up</a></li>
+	 <li><a href="page5.html">Using API</a></li>
+	 <li><a href="page6.html">Results</a></li>
+	 <li><a href="lastPage.html">About</a></li>
+      </ul>
+      
+      <section id="text-space">
+	 <h1>Writing Server-side JavaScript</h1>
+	 <br>
+	 <h3>Setting Up a Server-side JS Call</h3>
+
+	 <p>There are a few tools we will use [the middleware] to write this tutorial program: express and request. Express is nice because it provides a lot of tools to make writing webpages easier, and request is necessary so as to give the server a tool to make http requests. As such, we shall start by including these modules into our JS file:
+	 <br>
+	 <div id="code_holder"><code>var express = require("express");<br>
+	    var request = require("request");</code></div>
+	 
+         Once we have imported these modules, it is time to create an application. We do this by calling a function of express:
+	 <div id="code_holder"><code>var app = express()</code></div>
+	 This creates a new Express application, which will be the basis for the rest of the program.
+	 <br>
+         <h4 style="display:inline">Note: </h4>
+	 The following is a personal preference, but is a very useful tool for making a more advanced web application.
+	 <br>
+	 The next module to include is called Handlebars, which is a template for Express, which will allow for easy access to HTML pages to use in the application.
+	 <div id="code_holder"><code>var handlebars = require("express-handlebars").create({defaultLayout:"main"});</code></div>
+	 
+	 In this line, the .create() function creates a base template using a file called "main". Main is an HTML file saved as main.handlebars, rather than with the basic html extension. The inside of main looks a lot like this:
+	 <img src="mainHandlebars.png" alt="main.handlebars" class="main"></img>
+	 As you can see, it is just a basic html document, except the guts of the body are replaced with <code>{{{body}}}</code>. This syntax will become more apparent later, but it essentially designates the area to add a template view. Anyway, on with the primary application!</p>
+
+	 <p>To finish the set up of Handlebars, we must start the Handlebars view engine.
+	 <div id="code_holder"><code>app.engine("handlebars", handlebars.engine);<br>
+	       app.set("view engine", "handlebars");</code></div>
+	 Now, Handlebars will handle any views that have the handlebars extension.</p>
+
+	 <p>The last thing to take care of before we get to the interesting part is setting the server port on which we will host the application. This is done in the line
+	 <div id="code_holder"><code>app.set("port", [port]);</code></div>
+         This is the basic set up for a half-way decent web app. Any other modules that you want to use can be included in the same way as above.
+	 <br>
+	 At this point, you should have something that looks like the following:
+	 <img src="server_set_up" alt="set-up" class="set-up"></img>
+	 </p>
+
+	 <br>
+
+	 <h3>General Structure of an Express/Handlebars Web Page</h3>
+
+	 <p>To start, we make a get request to the server.
+	 <div id="code_holder"><code>app.get("/url-extension", [function]);</code></div>
+	 If these were actual parameters, this line would apply the function to a blank page on your server which has the extension "url-extension". This seems simple enough, so let's add some Handlebars.</p>
+
+	 <p>So, it turns out that there is a little more preparation that needs to be completed before we can continue. In the directory where you have stored your application, you need to create a new directory called views, and inside views you need to create a new directory called layouts, and inside layouts you need to place your main.handlebars file. This is just the way Handlebars looks for files. Once that is complete, you will have stored the default layout to be used for all of your web pages. The next thing you should do is create a file called front.handlebars or home.handlebars in the views directory. This new file will contain the replacement lines for the <code>{{{body}}}</code> placeholder in main.</p>
+	 
+	 <p>What we are doing here is creating a landing page for the web app you are writing. Therefore, just for example purposes, write an html line in front.handlebars (or whatever you have named it), something like <code>&lt;h1&gt;Welcome to the Home Page!&lt;/h1&gt;</code>. Once that has been saved, it's time to write some javascript to test it. Back in your js file, write in the following lines:
+	 <div id="code_holder"><code>app.get("/", function(req, res){<br>
+	          res.render("front");<br>
+	       });</code></div>
+	 <div id="code_holder"><code>app.listen(app.get("port"));</code></div>
+	 This is, quite literally, the simplest form of an Express/Handlebars request. This call assigns an unnamed callback function to the home page. That function sends a get request (req) to the home page, and upon response (res) Handlebars renders the front.handlebars view in the main layout. The .listen() method checks the specified port to see if it is available, and if it is it starts the app on that port. To find it, navigate to your server and add :[port] after the main URL (before the final /), where you will see the results. But anyway, let's get to the good stuff.</p>
+	 
+	 <a class="prev" href="page3.html"><button type="button">Prev</button></a>
+	 <a class="next" href="page5.html"><button type="button">Next</button></a>
+      </section>
+   </body>
+</html>

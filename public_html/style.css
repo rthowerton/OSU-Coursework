@@ -1,0 +1,88 @@
+body{
+   background-image:url("http://web.engr.oregonstate.edu/~howertor/riot_bg.jpg");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: center;
+   font-family:Arial,sans-serif;
+   color:white;
+}
+
+header{
+   background:rgba(0,0,0,0.5);
+   top:0px;
+   left:0px;
+   width:100%;
+   position:absolute;
+}
+
+ul{
+   background:rgba(0,0,0,0.5);
+   margin-left:0px;
+   list-style-type:none;
+   padding:5px;
+   width:20%
+   height:initial;
+   position:fixed;
+   overflow:auto;
+}
+
+li a{
+   display:block;
+   color:red;
+   padding:5px 10px;
+   text-decoration:none;
+}
+
+li a.active{
+   background-color:red;
+   color:black;
+}
+
+li a:hover:not(.active){
+   background-color:lightCoral;
+   color:black;
+}
+
+h1.title{
+   font-size:45px;
+   color:white;
+}
+
+#riot{
+   color:red;
+   font-style:normal;
+}
+
+img{
+   display:block;
+   margin-top:10px;
+   margin:auto;
+   width:50%;
+   height:50%;
+}
+
+img.logo{
+   display:block;
+   margin:auto;
+   float:initial;
+   width:100px;
+   height:100px;
+}
+
+section{
+   margin:auto;
+   margin-top:10%;
+   width:75%;
+   height:80%;
+   background-color:rgba(25,25,25,1.0);
+}
+
+code{
+   color:red;
+}
+
+#code_holder{
+   top:5px;
+   margin-left:5%;
+   width:80%;
+}

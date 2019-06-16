@@ -1,0 +1,9 @@
+#!/bin/bash
+i=1
+limit=$#
+(( limit++ ))
+while [ $i -ne $limit ]
+do
+   printf "$\n"
+   (( i++ ))
+done

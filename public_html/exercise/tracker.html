@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Last Assignment</title>
+   </head>
+
+   <body>
+   <form>	 
+         <fieldset>
+	    <legend>Enter your exercise data:</legend>
+	    <label>Name:
+	       <input type="text" id="name" maxlength="255">
+	    </label>
+            
+	    <br>
+            
+	    <label>Reps:
+	       <input type="number" id="reps">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>Weight:
+	       <input type="number" id="weight">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>Date:
+	       <input type="date" id="date">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>Lbs:
+	       <input type="number" id="lbs">
+	    </label>
+	    <div>Enter 1 for lbs, 0 for kg</div>
+            
+	    <input id="insert"  type="button" value="insert"/>
+	 </fieldset>
+      </form>
+
+      <br>
+
+      <form id="editRow" style="display:none">
+         <fieldset>
+	    <legend>Enter your updated exercise data:</legend>
+
+	    <input type="hidden" id="ident">
+
+	    <label>New Name:
+	       <input type="text" id="newName" maxlength="255">
+	    </label>
+            
+	    <br>
+            
+	    <label>New Reps:
+	       <input type="number" id="newReps">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>New Weight:
+	       <input type="number" id="newWeight">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>New Date:
+	       <input type="date" id="newDate">
+	    </label>
+	    
+	    <br>
+	    
+	    <label>New Lbs:
+	       <input type="number" id="newLbs">
+	    </label>
+	    <div>Enter 1 for lbs, 0 for kg</div>
+            
+	    <input id="update"  type="button" value="update"/>
+	 </fieldset>
+      </form>
+      
+      <input id="sub" type="button" value="show table"/>
+
+      <script src="tracker.js"></script>
+   </body>
+</html>

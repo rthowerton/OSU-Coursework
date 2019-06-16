@@ -1,0 +1,22 @@
+#!/bin/bash
+row="tempRow"
+col="tempCol"
+hold="holdFile"
+tmp="tempfile"
+read line < $1
+#while read line
+#do
+   echo $line > $hold
+   wc -w $hold > $tmp
+   #cat $row
+   numNums=$(cut -f1 -d' ' $tmp)
+   ((numNums++))
+   i=1
+   while [[ $i != $numNums ]]
+   do
+      cut -f$i $1 > $col
+      cat $col | tr '\n' '\t' >> $row
+      echo '' >> $row
+      ((i++))
+   done
+#done < $1

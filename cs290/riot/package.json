@@ -1,0 +1,19 @@
+{
+   "name": "how-to",
+   "version": "1.0.0",
+   "description": "Creating documentation for the Riot Games API",
+   "main": "app.js",
+   "scripts": {
+      "text": "echo \"Error: no test specified\" && exit 1"
+   },
+   "author": "Ryan Howerton",
+   "license": "ISC",
+   "dependencies": {
+      "body-parser": "^1.13.3",
+      "express": "^4.13.2",
+      "express-handlebars": "^3.0.0",
+      "express-session": "^1.11.3",
+      "mysql": "^2.8.0",
+      "riot-games-api-nodejs": "^1.0.6"
+   }
+}

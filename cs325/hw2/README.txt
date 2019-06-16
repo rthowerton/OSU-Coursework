@@ -1,0 +1,1 @@
+The two code files are stoogesort.cpp and stoogetime.cpp. To run them, enter g++ <filename>, and an a.out file will be generated. To run a.out, be sure you have a file named data.txt that contains a list of values separated by spaces. To check the output of these files, you can either open and read stooge.out, or use the cat function in bash to print the values to the screen.

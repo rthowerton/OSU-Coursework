@@ -1,0 +1,5 @@
+1. _dynArrSetCapacity does not allow the array to shrink without causing an error, because it does not change the size or contents of the array before resetting the capacity. Therefore there is the possibility that _dynArrSetCapacity could create an array that does not have enough space to store all of the original values, which would cause a segmentation fault.
+
+2. Two functions need to be modified: removeAtDynArr and popDynArr.
+
+3. When breaking encapsulation there is no guarantee that the result will fulfill the final goal, but when calling functions specifically designed to carry out a specified role, those functions will work to guarantee they fulfill the requisite post-conditions. For example, in this case, topDynArr and pushDynArr are stack interface functions meant to work specifically with a stack data structure. To carry out their task they call functions dedicated to the general case of a dynamic array. But when breaking the encapsulation in popDynArray, the function technically modifies something out of its scope.

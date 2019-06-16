@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Notes on Server-side JS</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+
+   <body>
+      <header id="header">
+	 <a class="home" href="index.html"><img src="Riot_Games_logo.png" alt="logo" class="logo"></img></a>
+      </header>
+      
+      <ul>
+	 <li><a href="index.html">Front</a></li>
+	 <li><a href="page2.html">Start</a></li>
+	 <li><a href="page3.html">Warnings</a></li>
+	 <li><a href="page4.html">The Set-Up</a></li>
+	 <li><a href="page5.html">Using API</a></li>
+	 <li><a href="page6.html">Results</a></li>
+	 <li><a href="lastPage.html">About</a></li>
+      </ul>
+
+      <section id="text-space">
+         <h1>Notes on Server-side JavaScript</h1>
+	 <br>
+	 <h3>Client-side vs Server-side</h3>
+	 
+	 <p>This is a very important topic to touch on for the purposes of this tutorial. While it may seem pedantic at first, there is actually a very important reason for having the split. Client calls to the server are very easy to program and need no middleware, but are less secure. Server-server communication is much safer, but requires middleware to run requests. In this tutuorial, we will be working solely with server-side JavaScript. All requests to the <em id="riot">Riot</em> Games API, using node.js must be made in this fashion or else you will most likely be denied access.</p>
+	 <br>
+
+	 <h1 style="color:red;">Warning!</h1>
+	 <h3>The Same Origin Policy and Cross Origin Resource Sharing</h3>
+	 <p>These are the primary reason to use server-side JavaScript requests. (Most) Browsers have an in-built feature known as the Same Origin Policy, which says that scripts in one domain cannot access information in another domain. Your browser/client most likely has this feature, and if you write your code to send requests from the client the request will not be fulfilled, and instead you will be greeted with a Cross-Origin-Reference-Blocked error 403. There are a few sneaky ways to get around this, but writing a script to be executed by the server is the best (and most straight-edge) way.<p> 
+
+	 <a class="prev" href="page2.html"><button type="button">Prev</button></a>
+	 <a class="next" href="page4.html"><button type="button">Next</button></a>
+      </section>
+   </body>
+</html>

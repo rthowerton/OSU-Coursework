@@ -1,0 +1,21 @@
+18c18
+< package finalprojectA;
+---
+> package finalprojectB;
+68c68
+<         return VALIDATOR;
+---
+>     	return null;
+77c77
+<         return isValidInet4Address(inetAddress) || isValidInet6Address(inetAddress);
+---
+>        return isValidInet4Address(inetAddress) || isValidInet6Address(inetAddress);
+88,89c88
+< 
+<         if (groups == null) {
+---
+>        if (groups != null) {
+108c107
+<                 return false;
+---
+>             		return true;

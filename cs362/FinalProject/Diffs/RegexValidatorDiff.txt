@@ -1,0 +1,12 @@
+17c17
+< package finalprojectA;
+---
+> package finalprojectB;
+120c120
+<         if (regexs == null || regexs.length == 0) {
+---
+>         if (regexs != null || regexs.length == 0) {
+125c125
+<         for (int i = 0; i < regexs.length; i++) {
+---
+>         for (int i = 0; i < regexs.length-1; i++) {

@@ -1,0 +1,9 @@
+Oregon 10 2
+Benton 5 100 500 1 Corvallis
+Lane 5 200 500 2 Eugene Springfield
+SouthCarolina 18 2
+Anderson 13 90 600 2 Anderson Pendleton
+Pickens 5 120 700 2 Clemsen Pickens
+California 20 2
+Orange 7 135 700 1 Irvine
+LosAngeles 13 100 650 1 LosAngeles

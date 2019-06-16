@@ -1,0 +1,25 @@
+#!/bin/bash
+tempFile="temp_file"
+sortFile="sort_file"
+echo "Average	Median"
+   while read line # read input from datafilepath
+   do
+      sum=0
+      numCount=0 # stores the number of values in a line      
+      # Read lines are printed into a file called temp_file.
+      echo $line | tr ' ' '\n' > $tempFile
+      for num in $line
+      do
+         sum=$(expr $sum + $num)
+         ((numCount++))
+      done
+      # the following expression calculates the mean averages
+      result=`expr \( $sum + \( $numCount / 2 \) \) / $numCount`
+      printf "$result\t"
+      # Find the median
+      halfCount=$(expr \( $numCount / 2 \) + 1)
+      sort -n $tempFile | tr '\n' '\t' > $sortFile
+      echo '' >> $sortFile
+      median=$(cut -f$halfCount $sortFile)
+      echo $median
+   done < $1

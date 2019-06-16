@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Writing Server-side JS</title>
+      <link rel="stylesheet" href="style.css">
+   </head>
+
+   <body>
+      <header id="header">
+	 <a class="home" href="index.html"><img src="Riot_Games_logo.png" alt="logo" class="logo"></img></a>
+      </header>
+      
+      <ul>
+	 <li><a href="index.html">Front</a></li>
+	 <li><a href="page2.html">Start</a></li>
+	 <li><a href="page3.html">Warnings</a></li>
+	 <li><a href="page4.html">The Set-Up</a></li>
+	 <li><a href="page5.html">Using API</a></li>
+	 <li><a href="page6.html">Results</a></li>
+	 <li><a href="lastPage.html">About</a></li>
+      </ul>
+      
+      <section id="text-space">
+	 <h1>Writing Server-Side JavaScript</h1>
+	 <br>
+         <h3>The Request Module</h3>
+         
+	 <p>So, now it is time to make use of that request module we imported last page. The general structure of the express doesn't change much at all. However, we are about to add quite a bit to the callback function (remember, it is a function, so it can do a whole lot more stuff than just render html pages). Let's make a page with the extension of riot.
+	 <div id="code_holder"><code>app.get("/riot", function(req, res, next){</code></div>
+	 The only difference in this line would be the addition of <code>next</code> to the callback function. Don't worry about this yet.
+	 <div id="code_holder"><code>var context {};</code></div>
+	 This is just an object to hold the response, it can be called whatever you want to call it.
+	 <div id="code_holder"><code>request([insert destination here], function(err, response, body){</code></div>
+	 Now this is the good part! In this line, we use the request module to open a new request to the URL [insert destination here] with the intention of calling the callback function (within a callback function) on the response. At this point, it's time to go back to the <em id="riot">Riot</em> Games API to look at the choices to insert into [insert destination here].</p>
+	 
+	 <img src="API_Reference.png" alt="API Reference" class="reference"></img>
+
+	 <p>Navigate to the <em id="riot">Riot</em> Games API Reference page.</p>
+
+	 <img src="summoner-v1.4.png" alt="summoner-v1.4" class="API_choice"></img>
+
+	 <p>Expand the first section called summoner-v1.4 and look at the syntax of the first extension. This is part of the URL destination we will send in our get request to <em id="riot">Riot</em>.</p>
+
+	 <p><em id="riot">Important: </em>The full destination URL has three parts. It consists of: the base URL, the API extension, and the api_key.</p>
+	 The base URL is always going to be "https://na.api.pvp.net". The extension obviously varies depending on the results you are looking for. The api_key is unique to you (remember to never share your key). Therefore, for the sake of this tutorial, we are going to insert the following url+extension+key into [insert destination here]: <code>https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/RiotSchmick?api_key=[yourKey]</code>. Here, we replace {region} with na and {summonerNames} with RiotSchmick. Obviously, you need to enter your key into the destination in the designated spot. Now, let's finish up this app!</p>
+
+	 <h3>The Rest of the App</h3>
+
+	 <p>In the callback of the request, we're going to start with some error handling. This will be done in the form of an if-else statement, with the idea being "If there is no error, then parse the body of the response and store it in the context object, else log the error and move on." For simplicity's sake, this is what that will look like:
+	 <div id="code_holder"><code>if(!err &amp;&amp; response.statusCode &lt; 400){<br>
+	       &nbsp;var array = JSON.parse(body);<br>
+	       &nbsp;for(var param in array.bjergsen){<br>
+	       &nbsp;&nbsp;context[param] = array.bjergsen[param].toString();<br>
+	       &nbsp;}<br>
+	       &nbsp;res.render("riot", context);<br>
+	       }<br>
+	       else{<br>
+	       &nbsp;if(response){<br>
+	       &nbsp;&nbsp;console.log(response.statusCode);<br>
+	       &nbsp;}<br>
+	       &nbsp;next(err);<br>
+	       }</code></div>
+	 Let's take a closer look at some of the pieces. SPecifically, the JSON.parse line and the for loop. <em id="riot">Riot</em>'s API always responds with JSON objects, so once the response is received it is important to parse it into sections. The for loop directly after that turns the elements of the parse JSON object into string types and stores them in key-value pairs inside the context object we created earlier.</p>
+
+	 <p>Now, if you look a little further you will see the line <code>res.render("riot", context);</code>, and you may be slightly confused. Well, that's because it turns out that we now have more Handlebars to mess with. We still use the main laoyout that we created earlier, but we now have something more interesting than the static welcome page. In this new riot.handlebars view (remember to store it in the views directory), let's have
+	 <div id="code_holder"><code>&lt;p&gt;Summoner Name: {{name}}<br>Summoner Id: {{id}}&lt;/p&gt;</code></div>
+	 Now, when you start the app using <code>node</code> and navigate to [your host]:[port]/riot, you will see the summoner name and summoner info displayed. The name is just to confirm that you have reached the correct summoner, and id is the juicy bit. Once you have a summoner's id, you can call on all sorts of info from <em id="riot">Riot</em>, and start making your very own web app.</p>
+         <a class="prev" href="page4.html"><button type="button">Prev</button></a>
+	 <a class="next" href="page6.html"><button type="button">Next</button></a>
+      </section>
+   </body>
+</html>

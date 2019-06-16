@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="UTF-8">
+       <title>List Pokemon</title>
+       <link rel="stylesheet" type="text/css" href="../style/pokedb.css">
+    </head>
+
+    <body>
+       <ul>
+          <li><a href="moves.html">View Moves</a></li>
+	  <li><a href="types.html">View Types</a></li>
+          <li><a href="maps.html">View Region Maps</a></li>
+       </ul>
+       <h3>Search:</h3>
+       <input type="temp" id="search" placeholder="Search by name...">
+       <button>Search</button>
+       <h3>List of Pokemon:</h3>
+       <table id="pokeTable">
+	  <tr class="header">
+	     <th>ID</th>
+	     <th>Name</th>
+	     <th>Primary Type</th>
+	     <th>Secondary Type</th>
+	     <th>HP</th>
+	     <th>Atk</th>
+	     <th>Def</th>
+	     <th>Sp. Atk</th>
+	     <th>Sp. Def</th>
+	     <th>Spe</th>
+	  </tr>
+	  <tr>
+	     <td>{{id}}</td>
+	     <td>{{Name}}</td>
+	     <td>{{type1}}</td>
+	     <td>{{type2}}</td>
+	     <td>{{hp}}</td>
+	     <td>{{atk}}</td>
+	     <td>{{def}}</td>
+	     <td>{{sp. atk}}</td>
+	     <td>{{sp. def}}</td>
+	     <td>{{spe}}</td>
+	  </tr>
+       </table>
+       <div id="add_delete_mon">
+	  <h3>Add a Custom Pokemon!</h3>
+	  <input type="temp" id="customName" placeholder="Name...">
+	  <input type="temp" id="customType1" placeholder="Primary type...">
+	  <input type="temp" id="customType2" placeholder="Optional Secondary type...">
+	  <input type="number" id="customHP" placeholder="Base HP...">
+	  <input type="number" id="customATK" placeholder="Base attack...">
+	  <input type="number" id="customDEF" placeholder="Base defense...">
+	  <input type="number" id="customSP_ATK" placeholder="Base special attack...">
+	  <input type="number" id="customSP_DEF" placeholder="Base special defense...">
+	  <input type="number" id="customSPE" placeholder="Base speed...">
+	  <button>Submit!</button>
+	  <h3>Delete your Custom Pokemon:</h3>
+	  <input type="number" id="deleteNumber" placeholder="Number of Pokemon to Delete">
+	  <button>Delete</button>
+       </div>
+    </body>
+</html>

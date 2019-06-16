@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stdio>
+#include <time.h>
+
+using namespace std;
+
+int main()
+{
+   int choice;
+   srand(time(NULL));
+
+   cout<<"Welcome to this awesome adventure game! To go left press 1, to go right left 2: "<<endl;
+   cin>>choice;
+
+   switch(choice)
+   {
+      case 1:
+
+      case 2:
+
+      default:
+
+   }
+   return 0;
+}

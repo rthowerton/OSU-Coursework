@@ -1,0 +1,25 @@
+\documentclass[10pt,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=.75in,letterpaper]{geometry}
+\linespread{1.0}
+
+% Title Page
+\title{Problem Statement}
+\author{Ryan Howerton \\ CS461 Fall 2018}
+\date{October 2018}
+
+\begin{document}
+	\maketitle
+	\begin{abstract}
+    Hello world!
+    \end{abstract}
+    \newpage
+    % Actual statement of problem
+    Humanity is rapidly approaching a time of truly interconnected devices, which is commonly being called the Internet of Things. The Internet of Things is a concept imagined as many so-called ‘smart’ devices (devices fitted with embedded computer controllers, which can be anything from toasters to vehicles) all connected to a network, the Internet of Things, and able to send and receive data. The underlying issue here is: with so many computers in our lives, what is stopping these devices being broken into and used for nefarious purposes? This project seeks to employ a preliminary solution to this effect, by securing not only the devices, but their communications to the network as well.\vspace{\baselineskip}
+    % What we are looking to solve
+    Unfortunately, these embedded devices will only have a limited amount of resources dedicated to them, not only physical/computing resources but also dedicated energy resources, both of which put upper limits on the abilities of these devices to participate in heavy cryptographic computation. Therefore, not only will this project look to implement a proof-of-concept secured network, we will also attempt to test the upper constraints on necessary dedicated resources, such as those mentioned.\vspace{\baselineskip}
+    % Our solution
+    In this project we will be implementing an ad hoc multi-hop mesh network composed of devices communicating on several standards, securing it, and then attacking it to expose weaknesses. We will use a number of microprocessor development boards configured to communicate over several communication standards. We will implement the simulation network with our own DNS and DHCP authority(ies), as well as an asymmetric key exchange system. This asymmetric key system will likely be facilitated by a central authority that would take on all heavy computations.\vspace{\baselineskip}
+    % Performance Metrics
+    Given all of the previously mentioned targets, the ideal result of this project is essentially described as a fully functional, if rudimentary, self-contained network. This network will be composed of many nodes, potentially organized in clusters, secured from outside assault. These nodes should be able to communicate with each other (possibly through one or more devices that act as bridges to the other clusters) securely over an asymmetric key protocol. We will judge our success based on the inclusion of the above components, as well as the results of measuring communication speed, power consumption on the nodes, and most importantly the security of the network.
+\end{document}

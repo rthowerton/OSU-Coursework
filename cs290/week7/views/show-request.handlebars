@@ -1,0 +1,12 @@
+<h1>{{type}} Request Received!</h1>
+<ul>Query Content
+   {{#each content}}
+      <li>{{this.key}}: {{this.value}}
+   {{/each}}
+</ul>
+
+<ul>{{body}}
+   {{#each post}}
+      <li>{{this.key}}: {{this.value}}
+   {{/each}}
+</ul>

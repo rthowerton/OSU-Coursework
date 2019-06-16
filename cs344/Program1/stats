@@ -1,0 +1,120 @@
+#!/bin/bash
+# This program is a foray into bash shell scripting.
+# 
+# This program calculates mean averages and medians of numbers
+# that are input to the script either from a file or from stdin.
+
+# Check the number of arguments given
+# when script is called.
+
+trap 'rm -f datafile* temp_file sort_file tempRow tempCol holdFile tempfile; exit 1' INT HUP TERM
+datafilepath="datafile$$"
+# if $# == 1, then ./stats will be reading from stdin.
+if [[ $# == 1 ]]
+then
+   cat > "$datafilepath"
+elif [[ $# == 2 ]] # if $# == 2, then ./stats will be reading from a file.
+then
+   datafilepath=$2
+elif [[ $# == 0 ]] # if $# isn't 1 or 2, then ./stats returns an error.
+then
+   echo "./stats {-rows|-cols} [file]" 1>&2
+   exit 1
+elif [[ $# > 2 ]]
+then
+   echo "./stats {-rows|-cols} [file]" 1>&2
+   exit 1
+else
+   echo "./stats {-rows|-cols} [file]" 1>&2
+   exit 1
+fi
+
+# Test if the argument is equivalent to
+# any series of characters beginning with
+# -r or -c, including -r or -c.
+
+arg1=$1
+# Check if provided file is found
+if [[ ! -r $datafilepath ]]
+then
+   echo -e "./stats: cannot read $datafilepath" 1>&2
+   exit 2
+elif [[ $arg1 == -r* ]] # row-wise
+then
+   tempFile="temp_file"
+   sortFile="sort_file"
+   echo -e "Average	Median" # headers for chart
+   while read line # read input from datafilepath
+   do
+      sum=0
+      numCount=0 # stores the number of values in a line      
+      # Read lines are printed into a file called temp_file.
+      echo $line | tr ' ' '\n' > $tempFile
+      for num in $line
+      do
+         sum=$(expr $sum + $num)
+         ((numCount++))
+      done
+      # the following expression calculates the mean averages
+      result=$(expr \( $sum + \( $numCount / 2 \) \) / $numCount)
+      printf "$result\t"
+      # Find the median
+      halfCount=$(expr \( $numCount / 2 \) + 1)
+      sort -n $tempFile | tr '\n' '\t' > $sortFile
+      echo '' >> $sortFile
+      median=$(cut -f$halfCount $sortFile)
+      echo $median
+   done < $datafilepath
+# this elif segment does the same but column-wise
+elif [[ $arg1 == -c* ]]
+then
+   # All the temp files
+   row="tempRow"
+   col="tempCol"
+   hold="holdFile"
+   tmp="tempfile"
+   tempFile="temp_file"
+   sortFile="sort_file"
+   # The following code block transposes columns into rows,
+   # and stores the numbers in $rows
+   read line < $datafilepath
+   echo $line > $hold
+   wc -w $hold > $tmp
+   numNums=$(cut -f1 -d' ' $tmp)
+   ((numNums++))
+   i=1
+   while [[ $i != $numNums ]]
+   do
+      cut -f$i $datafilepath > $col
+      cat $col | tr '\n' '\t' >> $row
+      echo '' >> $row
+      ((i++))
+   done
+   # Now calculate the average and median
+   echo -e "Average	Median" # headers for chart
+   while read line # read input from datafilepath
+   do
+      sum=0
+      numCount=0 # stores the number of values in a line      
+      echo $line | tr ' ' '\n' > $tempFile
+      # Read lines are printed into a file called temp_file.
+      for num in $line
+      do
+         sum=$(expr $sum + $num)
+         ((numCount++))
+      done
+      # the following expression calculates the mean averages
+      result=$(expr \( $sum + \( $numCount / 2 \) \) / $numCount)
+      printf "$result\t"
+      # Find the median
+      halfCount=$(expr \( $numCount / 2 \) + 1)
+      sort -n $tempFile | tr '\n' '\t' > $sortFile
+      echo '' >> $sortFile
+      median=$(cut -f$halfCount $sortFile)
+      echo $median
+   done < $row
+else
+   echo "./stats {-rows|-cols} [file]" 1>&2
+   exit 1
+fi
+rm -f datafile* temp_file sort_file tempRow tempCol holdFile tempfile

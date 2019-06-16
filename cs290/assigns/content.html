@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>First Webpage</title>
+      <link rel="stylesheet" href="style.css" type="text/css">
+   </head>
+   <body>
+   <table>
+      <caption>Sample Table</caption>
+      <thead>
+	 <tr><!--Row 1-->
+	    <th></th>
+            <th>Column 2</th>
+	    <th>Column 3</th>
+	    <th>Column 4</th>
+	    <th>Column 5</th>
+	    <th>Column 6</th>
+	 </tr>
+         <tr><!--Row 2-->
+	    <td><em>Row 1</em></td>
+	    <td>Row 1</td>
+	    <td>Row 1</td>
+	    <td>Row 1</td>
+	    <td>Row 1</td>
+	    <td>Row 1</td>
+	 </tr>
+	 <tr><!--Row 3-->
+	    <td><em>Row 2</em></td>
+	    <td>Row 2</td>
+	    <td>Row 2</td>
+	    <td>Row 2</td>
+	    <td>Row 2</td>
+	    <td>Row 2</td>
+	 </tr>
+	 <tr><!--Row 4-->
+	    <td><em>Row 3</em></td>
+	    <td>Row 3</td>
+	    <td>Row 3</td>
+	    <td>Row 3</td>
+	    <td>Row 3</td>
+	    <td>Row 3</td>
+	 </tr>
+	 <tr><!--Row 5-->
+	    <td><em>Row 4</em></td>
+	    <td>Row 4</td>
+	    <td>Row 4</td>
+	    <td>Row 4</td>
+	    <td>Row 4</td>
+	    <td>Row 4</td>
+	 </tr>
+      </thead>
+      <tfoot>
+	 <tr><!--Footer-->
+	    <td colspan="2">Footer 1</td>
+	    <td colspan="4">Footer 2</td>
+	 </tr>
+      </tfoot>
+   </table>
+
+   <ol>
+      <caption>List of Condiments</caption>
+      <li>Mustard</li>
+      <li>Ketchup</li>
+      <li>Ranch</li>
+   </ol>
+
+   <div id="outer-content"></div>
+   <div id="inner-content"></div>
+
+   <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="post">
+      <fieldset>
+	 <legend>User Info:</legend>
+	 <label>Username:
+	    <div id="username">
+	       <input type="text" name="text_input" size="30" maxlength="100"></div>
+	 </label>
+
+	 <br />
+
+	 <label>Password:
+	    <div id="password">
+	       <input type="password" name="password_input" size="30" maxlength="100"></div>
+	 </label>
+
+	 <br />
+
+	 <label>Number of ghost users:
+	    <div id="ghosts">
+	       <input type="number" name="numerical_input"></div>
+	 </label>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+	 <legend>Favorite candy:</legend>
+	 <label>
+	    <input type="radio" name="candy" value="Snickers">Snickers</label>
+	 <label>
+	    <input type="radio" name="candy" value="Skittles">Skittles</label>
+	 <label>
+	    <input type="radio" name="candy" value="Mentos">Mentos</label>
+      
+	 <br />
+
+	 <input type="submit" value="Submit Info" />
+      
+      </fieldset>
+   </form>
+   
+   <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="get">
+      <fieldset>
+	 <legend>User Info:</legend>
+	 <label>Username:
+	    <div id="username">
+	       <input type="text" name="text_input" size="30" maxlength="100"></div>
+	 </label>
+
+	 <br />
+
+	 <label>Password:
+	    <div id="password">
+	       <input type="password" name="password_input" size="30" maxlength="100"></div>
+	 </label>
+
+	 <br />
+
+	 <label>Number of ghost users:
+	    <div id="ghosts">
+	       <input type="number" name="numerical_input"></div>
+	 </label>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+	 <legend>Favorite candy:</legend>
+	 <label>
+	    <input type="radio" name="candy" value="Snickers">Snickers</label>
+	 <label>
+	    <input type="radio" name="candy" value="Skittles">Skittles</label>
+	 <label>
+	    <input type="radio" name="candy" value="Mentos">Mentos</label>
+      
+	 <br />
+
+	 <input type="submit" value="Submit Info" />
+      </fieldset>
+   </form>
+   
+   </body>
+</html>

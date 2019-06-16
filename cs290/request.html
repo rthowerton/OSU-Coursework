@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Submit Data by GET and POST</title>
+      <script src="req.js"></script>
+   </head>
+
+   <body>
+      <form>
+	 <fieldset>
+	    <!--first form to get weather data-->
+	    <legend>Request Weather Data</legend>
+
+	    <!--get weather via zip code-->
+	    <label for="zipCode">Zip Code</label>
+	    <input type="text" name="zipCode" id="zipCode">
+	    <input type="submit" id="zipSubmit" value = "Submit Zip"><br>
+	    
+	    <!--get weather via city,state-->
+	    <label for="cityState">City,State</label>
+	    <input type="text" name="cityState" id="cityState">
+	    <input type="submit" id="citySubmit" value="Submit City">
+	 </fieldset>
+      </form>
+
+      <!--show city, temperature, and humidity in list form-->
+      <ul>
+	 <caption><b>Result Data</b></caption>
+	 <li id="city"></li>
+	 <li id="temp"></li>
+	 <li id="humid"></li>
+      </ul>
+
+      <!--second form to show POST response-->
+      <form>
+	 <fieldset>
+	    <legend>Submit Via POST</legend>
+
+	    <label for="subPost">Text: </label>
+	    <input type="text" name="subPost" id="subPost">
+	    <input type="submit" id="postSubmit" value="Submit Post">
+	 </fieldset>
+      </form>
+
+      <!--display POST response in this div-->
+      <div id="display"></div>
+   </body>
+</html>
+

@@ -1,0 +1,8 @@
+17c17
+< package finalprojectA;
+---
+> package finalprojectB;
+30c30
+<          this.valid = valid;  //Weather the individual part of url is valid.
+---
+>          this.valid = !valid;  //Weather the individual part of url is valid.

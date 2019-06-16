@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>List of Moves</title>
+      <link rel="stylesheet" href="../style/pokedb.css">
+   </head>
+
+   <body>
+      <ul>
+	 <li><a href="index.html">Return to Home</a></li>
+         <li><a href="types.html">View Types</a></li>
+         <li><a href="maps.html">View Region Maps</a></li>
+      </ul>
+      <h3>Search:</h3>
+      <input type="text" id="moveSearch" placeholder="Search for move...">
+      <button>Search</button>
+      <h3>Moves:</h3>
+      <table>
+	 <tr>
+	    <th>Name</th>
+	    <th>Type</th>
+	    <th>Power</th>
+	    <th>Accuracy</th>
+	    <th>Category</th>
+	 </tr>
+	 <tr>
+	    <td>{{name}}</td>
+	    <td>{{type1}}</td>
+	    <td>{{power}}</td>
+	    <td>{{accuracy}}</td>
+	    <td>{{category}}</td>
+	 </tr>
+      </table>
+      <div id="add_move">
+	 <h3>Add your own Move!</h3>
+	 <input type="temp" id="customMove" placeholder="Your move's name...">
+	 <input type="temp" id="customType" placeholder="Your move's type...">
+	 <input type="number" id="customPower" placeholder="Your move's power...">
+	 <input type="number" id="customAcc" placeholder="Your move's accuracy (optional)">
+	 <input type="temp" id="customCat" placeholder="your move's category...">
+	 <button>Submit!</button>
+	 <h3>Delete a Move:</h3>
+	 <input type="temp" id="deleteMove" placeholder="Name of move to delete...">
+	 <button>Delete</button>
+      </div>
+   </body>
+</html>

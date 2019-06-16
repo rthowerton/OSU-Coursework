@@ -1,0 +1,33 @@
+table{
+   border-style:solid;
+}
+th, td{
+   border-style:solid;
+}
+#outer-content{
+   position:relative;
+   top:25px;
+   width:75%;
+   height:50px;
+   background-color:pink;
+}
+#inner-content{
+   position:relative;
+   bottom:12.5px;
+   left:9%;
+   width:56%;
+   height:25px;
+   background-color:blue;
+}
+#username{
+   position:relative;
+   left:0px;
+}
+#password{
+   position:relative;
+   left:0px;
+}
+#ghosts{
+   position:relative;
+   left:0px;
+}

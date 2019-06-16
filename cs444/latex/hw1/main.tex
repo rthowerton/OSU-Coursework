@@ -1,0 +1,144 @@
+\documentclass[10pt,draftclsnofoot,onecolumn]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{bibentry}
+\usepackage[margin=.75in,letterpaper]{geometry}
+\linespread{1.0}
+
+\title{Group 15 Assignment 1 Report \vspace{\baselineskip}}
+\author{Ryan Howerton, Jinfeng Li, Vincenzo Piscitello \\
+		CS444 Spring 2018 \vspace{10\baselineskip}}
+
+
+%-------------------------------------------------------------------------------
+% Title Page
+%-------------------------------------------------------------------------------
+\begin{document}
+  \maketitle
+  \begin{abstract}
+  	In this first assignment for Operating Systems II, we made contact with our groups and 
+    prepared our group directory on the os2 server by preparing the kernel and virtual machine 
+    source code and setting up a Git repository. We copied several files to our repository, ran 
+    the Qemu virtual machine, and built the Yocto Linux Embedded Kernel. We kept a log of our 
+    commits to the aforementioned Git repository, beginning with the creation of the repository. 
+    Finally, we logged the work done to reach a final solution.
+  \end{abstract}
+  %-------------------------------------------------------------------------------
+  % Document Start
+  %-------------------------------------------------------------------------------
+  \newpage
+    %-------------------------------------------------------------------------------
+    % Command Log
+    %-------------------------------------------------------------------------------
+    \section{Command Log}
+    \begin{center}
+        \begin{tabular}{ | p{14cm} | }
+        \hline
+        cd /scratch/spring2018/ \\ \hline
+        mkdir group15\_444 \\ \hline
+        cd group15\_444 \\ \hline
+        git clone --branch v3.19.2 git://git.yoctoproject.org/linux-yocto-3.19  \\ \hline
+        cp /scratch/files/bzImage-qemux86.bin . \\ \hline
+        cp /scratch/files/core-image-lsb-sdk-qemux86.ext4 . \\ \hline
+        source environment-setup-i586-poky-linux \\ \hline
+        cd linux-yocto-3.19/  \\ \hline
+        git checkout -b master \\ \hline
+        git commit -a -m "Initial Commit"  \\ \hline 
+        cp /scratch/files/config-3.19.2-yocto-standard .config \\ \hline
+        make menuconfig  \\ \hline
+        cd .. \\ \hline
+        ../bin/acl\_open group15\_444 howertor piscitev \\ \hline
+        ../bin/acl\_open group15\_444 lijinf piscitev \\ \hline
+		cd /scratch/spring2018/ \\ \hline
+		make -j4 all \\ \hline
+		qemu-system-i386 -gdb tcp::5515 -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug" \\ \hline
+        gdb -tui \\ \hline
+        target remote:5515 \\ \hline
+        continue \\ \hline
+        git commit -a -m "Initial Commit"  \\ \hline
+		\end{tabular}
+    \end{center}
+    
+    %-------------------------------------------------------------------------------
+    % Qemu Command Line Flags Explained
+    %-------------------------------------------------------------------------------
+    \section{Qemu Command Flags}
+    \par Command: qemu-system-i386 -gdb tcp::???? -S -nographic -kernel bzImage-qemux86.bin -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio -enable-kvm -net none -usb -localtime --no-reboot --append "root=/dev/vda rw console=ttyS0 debug"
+    \begin{itemize}
+    \item qemu-system-i386: Boot from image emulating i386 architecture
+    \item -gdb tcp::???? -S: Boot in gdb debug mode with tcp port ???? and wait for gdb connection
+    \item -nographic: Do not display video output
+    \item -kernel bzImage-qemux86.bin: Use bzImage-qemux86.bin as kernel image
+    \item -drive file=core-image-lsb-sdk-qemux86.ext4,if=virtio: Use core-image-lsb-sdk-qemux86.ext4 as drive and specify the controller’s PCI address
+    \item -enable-kvm: Enable KVM full virtualization support
+    \item -net none: No network connection
+    \item -usb: Enable the USB driver
+    \item -localtime: Use local time as time
+    \item --no-reboot: Exit instead of rebooting
+    \item --append "root=/dev/vda rw console=ttyS0 debug": Use "root=/dev/vda rw console=ttyS0 debug" as kernel command line
+    \end{itemize}
+    
+    %-------------------------------------------------------------------------------
+    % Guided Question Answers
+    %-------------------------------------------------------------------------------
+    \section{Guided Question Answers}
+    \begin{enumerate}
+	\item What do you think the main point of this assignment is?
+    	\begin{itemize}
+    	\item The main point of the assignment is to prepare our group directory for future assignments and prepare us for working with the kernel and VM in the future.
+        \end{itemize}
+    \item How did you personally approach the problem? Design decisions, algorithm, etc.
+    	\begin{itemize}
+        \item We made sure we understood the final goal of the assignment, and then laid out a plan for how to achieve it. We decided that it would be better to gather all of the components of the VM and the kernel before attempting to test the individual parts.
+        \end{itemize}
+    \item How did you ensure your solution was correct? Testing details, for instance.
+    	\begin{itemize}
+        \item We built the kernel and ran the VM using the provided commands. It appeared that both of the parts ran correctly, so we are pretty sure that the solution is correct.
+        \end{itemize}
+    \item What did you learn?
+    	\begin{itemize}
+        \item First, we learned a lot about working with Git locally. For example, we discovered that we were unable to follow that standard Git workflow with multiple people working in the same directory, because every time a user attempted to branch off of the main, every user in the directory would be switched to that branch.\par
+        We also learned a great deal about how to manage a directory accessed by multiple people, specifically that not all users had access to files owned by someone who is not themselves. We spent a lot of time trying to get everybody on the same page, due to the fact that a lot of people working in the same directory caused necessary files to become disassociated (many files in the .git folder became owned by different people).
+        \end{itemize}
+	\end{enumerate}
+    
+    %-------------------------------------------------------------------------------
+    % Version Control Log
+    %-------------------------------------------------------------------------------
+    \section{Version Control Log}
+	\begin{center}
+        \begin{tabular}{ | p{14cm} | }
+        \hline
+        {\bf Commits }\\ \hline
+        {\bf commit} f0c5ea77098c2ded47d2b438509a628907489ca6\newline
+        {\bf Author:} Vincenzo Piscitello \textless piscitev@os2.engr.oregonstate.edu \textgreater \newline
+        {\bf Date:}   Sun Apr 15 14:19:20 2018 -0700\newline
+        \newline Initialization Complete  \\ \hline
+        {\bf commit} 1222d7e6c7804d9a7232654df3906500f653c2b8\newline
+        {\bf Author:} Vincenzo Piscitello \textless piscitev@os2.engr.oregonstate.edu \textgreater \newline
+        {\bf Date:}   Sat Apr 14 15:36:44 2018 -0700\newline
+        \newline Initial Commit \\ \hline
+        {\bf commit} 660613d1a4e94144490850b6c3d350331860fac4\newline
+        {\bf Author:} Greg Kroah-Hartman \textless gregkh@linuxfoundation.org \textgreater \newline
+        {\bf Date:}   Wed Mar 18 14:11:52 2015 +0100\newline
+        \newline Linux 3.19.2  \\
+        \hline
+        \end{tabular}
+    \end{center}
+
+    %-------------------------------------------------------------------------------
+    % Work Log
+    %-------------------------------------------------------------------------------
+    \section{Work Log}
+    	\begin{center}
+        \begin{tabular}{ | p{4cm} | p{10cm} | }
+        \hline
+        Wednesday, April 11th & Created group directory, copied all requisite files from /scratch/files. Set permissions on all folders and files in the directory to rwxrwxrwx..\\ \hline
+        Thursday, April 12th & Cloned the linux yoctoproject repository to the group directory and created a git repository in the new folder. Discovered we needed to retroactively set the permissions on new folders and files. Also discovered that if other people do work in the directory under this architecture, then ownership on important files change.\\ \hline
+        Saturday, April 14th & Reverted most previous work to fix issues pertaining to user permissions. Re-cloned the repository and copied all necessary files from one user's account. Then appriopiate permissions were given to other team members. Then the menuconfig and kernal were built to initialize the system.\\ \hline
+        Sunday, April 15th & Completed the homework document and tested the system to ensure it would build.\\ \hline
+        \end{tabular}
+    \end{center}
+\nocite{*}
+\nobibliography{bib.bib}
+\bibliographystyle{alpha}
+\end{document}

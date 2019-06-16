@@ -1,0 +1,24 @@
+17c17
+< package finalprojectA;
+---
+> package finalprojectB;
+167c167
+<     private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!/~*'%$_;\\(\\)]*)?$";
+---
+>     private static final String PATH_REGEX = "^(/[-\\w:@&?=+,.!*'%$_;\\(\\)]*)?$";
+192c192,194
+<     private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
+---
+>    private static final String[] DEFAULT_SCHEMES = {"http", "https", "ftp"}; // Must be lower-case
+> 
+> 
+280c282,283
+<                 allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));
+---
+>                 allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+> 
+314c317,318
+<         if ("file".equals(scheme)) {// Special case - file: allows an empty authority
+---
+> 
+>         if ("http".equals(scheme)) {// Special case - file: allows an empty authority

@@ -1,0 +1,20 @@
+#!/bin/bash
+# This script is used to test various
+# commands I don't understand.
+tempFile="tempFile"
+tempNum=0
+backCount=1
+resultFile="resultFile"
+   while read line # read input from datafilepath
+   do
+      # Read lines are printed into a file called temp_file.
+      echo $line > $tempFile
+      numCount=wc -w $tempFile | cut -f1 # stores the number of values in a line
+      for num in $line
+      do
+         sum=$(expr $sum + $num)
+         ((numCount++))
+      done
+      ((numCount++))
+      tempNum=$numCount
+   done < $1
